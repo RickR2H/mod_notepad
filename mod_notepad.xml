@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="4.0" client="administrator" method="upgrade">
+	<name>mod_notepad</name>
+	<author>R2H</author>
+	<creationDate>July 2018</creationDate>
+	<copyright>Copyright (c) 2021 R2H. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>post@r2h.nl</authorEmail>
+	<authorUrl>https://www.r2h.nl</authorUrl>
+	<version>1.0.0</version>
+	<description>MOD_NOTEPAD_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_notepad">mod_notepad.php</filename>
+		<folder>tmpl</folder>
+		<folder>src</folder>
+	</files>
+	<media folder="media" destination="mod_notepad">
+		<folder>css</folder>
+	</media>
+	<languages>
+		<language tag="en-GB">language/en-GB/mod_notepad.ini</language>
+		<language tag="en-GB">language/en-GB/mod_notepad.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="direction"
+					type="list"
+					label="MOD_NOTEPAD_DIRECTION"
+					default="start">
+					<option value="offcanvas-start">MOD_NOTEPAD_START</option>
+					<option value="offcanvas-end">MOD_NOTEPAD_END</option>
+					<option value="offcanvas-top">MOD_NOTEPAD_TOP</option>
+					<option value="offcanvas-bottom">MOD_NOTEPAD_BOTTOM</option>
+				</field>
+				<field
+					name="btntitle"
+					type="text"
+					label="MOD_NOTEPAD_BTNTITLE"
+					default="Notes"
+					filter="raw"
+				/>
+				<field
+					name="filename"
+					type="text"
+					label="MOD_NOTEPAD_FILENAME"
+					description="MOD_NOTEPAD_FILENAME_DESC"
+					default="readme"
+					hint="readme"
+				/>
+				<field
+					name="location"
+					type="text"
+					label="MOD_NOTEPAD_LOCATION"
+					description="MOD_NOTEPAD_LOCATION_DESC"
+					default=""
+					hint="MOD_NOTEPAD_LOCATION_HINT"
+				/>
+                <field
+                    name="usergroup"
+                    type="usergrouplist"
+                    label="MOD_NOTEPAD_USERGROUP"
+                    description="MOD_NOTEPAD_USERGROUP_DESC"
+                    multiple="true" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					class="form-select"
+				/>
+				<field
+					name="moduleclass_sfx"
+					type="textarea"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					rows="3"
+					validate="CssIdentifier"
+				/>
+				<field
+					name="automatic_title"
+					type="radio"
+					label="COM_MODULES_FIELD_AUTOMATIC_TITLE_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					default="1"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="cache"
+					type="list"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					default="0"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field
+					name="cache_time"
+					type="number"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					default="0"
+					filter="integer"
+					min="0"
+					validate="number"
+				/>
+				<field
+					name="cachemode"
+					type="hidden"
+					default="itemid"
+					>
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
