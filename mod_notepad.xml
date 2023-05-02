@@ -42,14 +42,6 @@
 					filter="raw"
 				/>
 				<field
-					name="filename"
-					type="text"
-					label="MOD_NOTEPAD_FILENAME"
-					description="MOD_NOTEPAD_FILENAME_DESC"
-					default="readme"
-					hint="readme"
-				/>
-				<field
 					name="location"
 					type="text"
 					label="MOD_NOTEPAD_LOCATION"

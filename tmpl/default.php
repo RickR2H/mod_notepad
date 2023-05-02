@@ -22,6 +22,53 @@ $wa->registerAndUseStyle('notepad-default.css', 'mod_notepad/notepad-default.css
 
 $offcanvasElement = 'offcanvas' . $module->id;
 
+/* INLINE CSS */
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+
+$style = <<<CSS
+ .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+    --offcanvas-width: 600px;
+    --offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+	overflow-y: auto;
+}
+.notepad-button {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-padding-end: 4px;
+    align-items: center;
+    background-color: var(--template-bg-dark-60);
+    border-radius: 22px;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 1rem;
+    padding-inline-end: 4px;
+    border: 0;
+    z-index: 1039;
+    position: relative;
+    padding: 0;
+}
+
+.notepad-button:hover {
+    color: #fff;
+    background-color: var(--template-bg-dark-50);
+}
+
+.offcanvas-title {
+    margin-bottom: 0;
+    line-height: 1.75;
+}
+
+.offcanvas-body {
+    flex-grow: 1;
+    padding: 1rem 1rem;
+    overflow-y: auto;
+}
+CSS;
+$wa->addInlineStyle($style, ['name' => 'module' . $module->id]);
+
 $script = <<<SCRIPT
 window.addEventListener("load", () => {
 	let drawer = document.getElementById("$offcanvasElement")
@@ -68,7 +115,7 @@ $wa->addInlineScript($script, ['name' => 'module' . $module->id]);
 							<div class="fst-italic small"><?php echo Text::_('MOD_NOTEPAD_NONOTES'); ?></div>
 						<?php endif; ?>
 					</div>
-					<a class="d-block text-center mt-3 small" href="<?php echo $downloadPathFile; ?>" download><?php echo Text::_('MOD_NOTEPAD_DOWNLOAD'); ?></a>
+					<a class="d-block text-center mt-3 small" href="<?php echo $downloadPath; ?>" download><?php echo Text::_('MOD_NOTEPAD_DOWNLOAD'); ?></a>
 				</div>
 				<?php if ($canEdit === true) : ?>
 				<div class="tab-pane fade" id="editnote-tab-pane<?php echo $module->id; ?>" role="tabpanel" aria-labelledby="editnote-tab" tabindex="0">

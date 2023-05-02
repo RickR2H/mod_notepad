@@ -14,17 +14,14 @@ use Joomla\CMS\Factory;
 use \Joomla\CMS\Uri\Uri;
 
 $location 				= $params->get('location', '');
-$location 				= rtrim($location, '/');
 $location 				= ltrim($location, '/');
 $savePath 				= JPATH_SITE . '/' . $location;
 $downloadPath			= URI::root() . '/' . $location;
 
-$filename 				= $params->get('filename', 'readme');
+$savePath 			= $savePath;
+$downloadPathFile 		= $downloadPath;
 
-$savePathFile 			= $savePath . '/' . $filename . '.md';
-$downloadPathFile 		= $downloadPath . '/' . $filename . '.md';
-
-if (!Folder::exists($savePath)) {
+if (!FILE::exists($savePath)) {
 	echo 'There is something wrong with the file path settings';
 }
 
@@ -53,13 +50,13 @@ if ($isAdmin === true || $hasRightToView === true) {
 
 if (isset($_POST['text'])) {
     $new_content = $_POST['text'];
-    file_put_contents($savePathFile, $new_content);
+    file_put_contents($savePath, $new_content);
 }
 
 $fileContent = '';
 
-if (File::exists($savePathFile)) {
-	$fileContent = file_get_contents ($savePathFile);
+if (File::exists($savePath)) {
+	$fileContent = file_get_contents ($savePath);
 }
 
 require ModuleHelper::getLayoutPath('mod_notepad', $params->get('layout', 'default'));
