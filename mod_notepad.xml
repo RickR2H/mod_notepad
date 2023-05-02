@@ -14,9 +14,6 @@
 		<folder>tmpl</folder>
 		<folder>src</folder>
 	</files>
-	<media folder="media" destination="mod_notepad">
-		<folder>css</folder>
-	</media>
 	<languages>
 		<language tag="en-GB">language/en-GB/mod_notepad.ini</language>
 		<language tag="en-GB">language/en-GB/mod_notepad.sys.ini</language>
