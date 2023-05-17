@@ -62,9 +62,11 @@ $style = <<<CSS
 }
 
 .offcanvas-body {
-    flex-grow: 1;
     padding: 1rem 1rem;
     overflow-y: auto;
+}
+.markdown-editor {
+	height: calc(100vh - 15rem);
 }
 CSS;
 $wa->addInlineStyle($style, ['name' => 'module' . $module->id]);
@@ -122,7 +124,7 @@ $wa->addInlineScript($script, ['name' => 'module' . $module->id]);
 					<div class="form-body">
 						<div class="form-body-element my-3">
 							<label for="editNotesFormControlTextarea" class="form-label"><?php echo Text::_('MOD_NOTEPAD_MDEDITOR'); ?></label>
-							<textarea name="text" class="form-control font-monospace" id="editNotesFormControlTextarea" rows="50"><?php echo $fileContent; ?></textarea>
+							<textarea name="text" class="markdown-editor form-control font-monospace" id="editNotesFormControlTextarea" rows="10"><?php echo $fileContent; ?></textarea>
 						</div>
 					</div>
 					<div class="form-footer text-end">

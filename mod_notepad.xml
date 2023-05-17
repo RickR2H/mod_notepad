@@ -41,10 +41,11 @@
 				<field
 					name="location"
 					type="text"
-					label="MOD_NOTEPAD_LOCATION"
-					description="MOD_NOTEPAD_LOCATION_DESC"
+					label="MOD_NOTEPAD_FILENAME"
+					description="MOD_NOTEPAD_FILENAME_DESC"
 					default=""
-					hint="MOD_NOTEPAD_LOCATION_HINT"
+					hint="MOD_NOTEPAD_FILENAME_HINT"
+					required="true"
 				/>
                 <field
                     name="usergroup"

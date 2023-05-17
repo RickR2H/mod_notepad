@@ -21,10 +21,6 @@ $downloadPath			= URI::root() . '/' . $location;
 $savePath 			= $savePath;
 $downloadPathFile 		= $downloadPath;
 
-if (!FILE::exists($savePath)) {
-	echo 'There is something wrong with the file path settings';
-}
-
 // https://parsedown.org/
 include_once('src/Parsedown.php');
 $Parsedown = new Parsedown();
