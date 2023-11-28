@@ -8,28 +8,35 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
-use Joomla\CMS\Filesystem\Folder;
-use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Factory;
 use \Joomla\CMS\Uri\Uri;
-
-$location 				= $params->get('location', '');
-$location 				= ltrim($location, '/');
-$savePath 				= JPATH_SITE . '/' . $location;
-$downloadPath			= URI::root() . '/' . $location;
-
-$savePath 			= $savePath;
-$downloadPathFile 		= $downloadPath;
-
-// https://parsedown.org/
-include_once('src/Parsedown.php');
-$Parsedown = new Parsedown();
 
 // get the user object
 $user 			= Factory::getApplication()->getIdentity();
 $isAdmin 		= false;
 $hasRightToView = false;
 $canEdit 		= false;
+
+// If user is not logged in return
+if ($user->guest) {
+	return;
+}
+
+$location 				= $params->get('location', '');
+$location 				= ltrim($location, '/');
+$savePath 				= JPATH_SITE . '/' . $location;
+$downloadPath			= URI::root() . '/' . $location;
+
+$savePath 				= $savePath;
+$downloadPathFile 		= $downloadPath;
+
+if (!file_exists($savePath)) {
+	echo 'There is something wrong with the file path settings';
+}
+
+// https://parsedown.org/
+include_once('src/Parsedown.php');
+$Parsedown = new Parsedown();
 
 // Get the module settings
 $groups = $params->get('usergroup', []);
@@ -51,7 +58,7 @@ if (isset($_POST['text'])) {
 
 $fileContent = '';
 
-if (File::exists($savePath)) {
+if (file_exists($savePath)) {
 	$fileContent = file_get_contents ($savePath);
 }
 
