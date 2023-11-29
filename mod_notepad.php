@@ -22,13 +22,11 @@ if ($user->guest) {
 	return;
 }
 
+// File path info
 $location 				= $params->get('location', '');
 $location 				= ltrim($location, '/');
 $savePath 				= JPATH_SITE . '/' . $location;
 $downloadPath			= URI::root() . '/' . $location;
-
-$savePath 				= $savePath;
-$downloadPathFile 		= $downloadPath;
 
 if (!file_exists($savePath)) {
 	echo 'There is something wrong with the file path settings';
@@ -42,7 +40,7 @@ $Parsedown = new Parsedown();
 $groups = $params->get('usergroup', []);
 
 // Check if user is Super Admin
-$isAdmin = (bool) $user->get('isRoot');
+$isAdmin = (bool) Factory::getApplication()->getIdentity()->authorise('core.admin');
 
 // Check is the user has right to view
 $hasRightToView = (bool) count(array_intersect($groups, $user->groups));
