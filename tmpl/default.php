@@ -27,7 +27,7 @@ $offcanvasElement = 'offcanvas' . $module->id;
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
 $style = <<<CSS
- .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+.offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
     --offcanvas-width: 600px;
     --offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
 	overflow-y: auto;
@@ -56,15 +56,19 @@ $style = <<<CSS
     background-color: var(--template-bg-dark-50);
 }
 
-.offcanvas-title {
+.offcanvas-notes .offcanvas-title {
     margin-bottom: 0;
     line-height: 1.75;
 }
 
-.offcanvas-body {
+.offcanvas-notes .offcanvas-body {
     flex-grow: 1;
     padding: 1rem 1rem;
     overflow-y: auto;
+}
+
+.offcanvas-notes textarea {
+	height: calc(100vh - 255px);
 }
 CSS;
 $wa->addInlineStyle($style, ['name' => 'module' . $module->id]);
