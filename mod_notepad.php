@@ -28,6 +28,13 @@ $location 				= ltrim($location, '/');
 $savePath 				= JPATH_SITE . '/' . $location;
 $downloadPath			= URI::root() . '/' . $location;
 
+$file_info = pathinfo($savePath);
+
+if (!is_dir($file_info['dirname'])) {
+	echo 'mod_notes has wrong directory path';
+	return;
+}
+
 // https://parsedown.org/
 include_once('src/Parsedown.php');
 $Parsedown = new Parsedown();
