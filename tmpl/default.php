@@ -112,7 +112,7 @@ $wa->addInlineScript($script, ['name' => 'module' . $module->id]);
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="note-tab-pane<?php echo $module->id; ?>" role="tabpanel" aria-labelledby="note-tab" tabindex="0">
-					<div class="bg-light mt-3 p-3 text-break">
+					<div class="bg-light text-dark mt-3 p-3 text-break">
 						<?php if ($fileContent) : ?>
 							<?php echo $Parsedown->text($fileContent); ?>
 						<?php else : ?>
