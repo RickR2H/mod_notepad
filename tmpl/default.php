@@ -17,9 +17,6 @@ HTMLHelper::_('bootstrap.tab');
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
-// Load CSS
-$wa->registerAndUseStyle('notepad-default.css', 'mod_notepad/notepad-default.css', [], ['as'=>'style']);
-
 $offcanvasElement = 'offcanvas' . $module->id;
 
 /* INLINE CSS */
@@ -68,7 +65,10 @@ $style = <<<CSS
 }
 
 .offcanvas-notes textarea {
-	height: calc(100vh - 255px);
+    height: calc(100vh - 255px);
+}
+.offcanvas-notes li p {
+    margin-bottom: 0;
 }
 CSS;
 $wa->addInlineStyle($style, ['name' => 'module' . $module->id]);
