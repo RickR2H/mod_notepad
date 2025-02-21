@@ -89,7 +89,10 @@ $wa->addInlineScript($script, ['name' => 'module' . $module->id]);
 	<div class="header-item-text"><?php echo $params->get('btntitle', 'Notes <i class="fas fa-arrow-circle-right"></i>'); ?></div>
 </a>
 
-<div class="offcanvas offcanvas-notes <?php echo $params->get('direction','offcanvas-start'); ?>" tabindex="-1" id="offcanvas<?php echo $module->id; ?>" aria-labelledby="offcanvas<?php echo $module->id; ?>Label">
+<div class="offcanvas offcanvas-notes <?php echo $params->get('direction', 'offcanvas-start'); ?>"
+	tabindex="-1" id="offcanvas<?php echo $module->id; ?>"
+	aria-labelledby="offcanvas<?php echo $module->id; ?>Label"
+	style="--offcanvas-width: <?php echo $params->get('oc_width', 800); ?>px;">
 	<form method="POST">
 		<div class="offcanvas-header">
 			<h5 class="offcanvas-title" id="offcanvas<?php echo $module->id; ?>Label"><?php echo $module->title; ?></h5>

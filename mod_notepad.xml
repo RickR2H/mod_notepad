@@ -7,7 +7,7 @@
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>post@r2h.nl</authorEmail>
 	<authorUrl>https://www.r2h.nl</authorUrl>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<description>MOD_NOTEPAD_XML_DESCRIPTION</description>
 	<files>
 		<filename module="mod_notepad">mod_notepad.php</filename>
@@ -31,6 +31,14 @@
 					<option value="offcanvas-top">MOD_NOTEPAD_TOP</option>
 					<option value="offcanvas-bottom">MOD_NOTEPAD_BOTTOM</option>
 				</field>
+				<field
+					name="oc_width"
+					type="text"
+					default="800"
+					label="MOD_NOTEPAD_OCWIDTH"
+					description="MOD_NOTEPAD_OCWIDTH_DESCRIPTION"
+					validate="number"
+					pattern="^(?:[4-9]\d{2}|1[0-1]\d{2}|1200)$" />				
 				<field
 					name="btntitle"
 					type="text"
